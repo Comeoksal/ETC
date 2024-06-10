@@ -1,0 +1,88 @@
+<html>
+    <head>
+      <meta charset="utf-8">
+      <script type="text/javascript">
+      
+        var Login = new Array();
+        var idcheck =0;
+        var flag = 1;
+        var count =0;
+    
+        function check(){
+          var a = document.getElementById("input1").value; 
+          if(a.length==0) {alert('아이디를 입력해주세요.'); return;}
+          for(var i=0; i<count; i++){
+            if(Login[i].id==a){ alert('중복입니다! 사용자 목록을 확인하시오.'); list(); flag =0; idcheck=1; break;}
+            else {flag =1;}
+          }
+          if(flag==1){alert('사용 가능한 아이디입니다.'); idcheck=2;}
+        }
+
+        function register(){
+          if(idcheck==0){alert('아이디 중복 확인을 해주세요.');}
+          else if(idcheck==1){alert('아이디가 중복입니다. 다시 입력해주세요.');}
+          else if(idcheck==2){
+          Login.push(
+            {
+              id : document.getElementById("input1").value,
+              pw : document.getElementById("input2").value,
+              name : document.getElementById("input3").value,
+              show : function () {
+                return `아이디 : ${this.id} 사용자이름 : ${this.name}<BR>`
+              }
+            }
+          )
+          alert('회원가입되었습니다.')
+          document.getElementById("input1").value = "";
+          document.getElementById("input2").value = "";
+          document.getElementById("input3").value = "";
+          count++; idcheck=0; flag =0;
+          }
+        }
+          function log(){
+            var n1 = document.getElementById("input4").value;
+            var n2 = document.getElementById("input5").value;
+            var UC = 0;
+            for(var i=0; i<Login.length; i++){
+              if(Login[i].id==n1){
+                if(Login[i].pw==n2){
+                  alert(Login[i].name+ '님 환영합니다');
+                  document.getElementById("input4").value = "";
+                  document.getElementById("input5").value = "";
+                  return;
+                }
+                else{alert('비밀번호가 일치하지 않습니다.'); UC=0; break;}
+              }
+              else {UC =1;}
+            }
+            if(UC==1 || count==0) {alert('등록된 회원정보가 없습니다! 사용자 목록을 확인하시오.'); list();}
+            }
+
+            function list(){
+              var str=""
+              for(var i=0; i<Login.length; i++){
+                str+= Login[i].show()
+              }
+              document.getElementById("user").innerHTML = str;
+            }
+          
+      </script>
+    </head>
+    <body>
+      <fieldset><legend>회원가입</legend>
+        <label>아이디 : <input id="input1" type="text"></label><button type="button" onClick="check()">중복확인</button><br>
+        <label>비밀번호 : <input id="input2" type="text"><br></label>
+        <label>사용자이름 : <input id="input3" type="text"></label>
+        <button type="button" id="ok" onClick="register()">
+          회원가입 </button><br>
+      </fieldset>
+    <fieldset><legend>로그인</legend>
+      <label>아이디 : <input id="input4" type="text"></label><br>
+      <label>비밀번호 : <input id="input5" type="password"></label><button type="button" onClick="log()">로그인</button>
+    </fieldset>
+    <fieldset><legend>가입한 모든 사용자 보기</legend>
+      <label><button type="button" onClick="list()">사용자 목록 출력</button><p id="user"></p></label>
+    </fieldset>
+    
+    </body>
+</html>
