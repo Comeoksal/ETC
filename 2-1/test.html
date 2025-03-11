@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            let name=[];
+            var score=[];
+            var count=0;
+            var flag=0;
+            function f1(){
+                if(flag==1) {alert('입력이 종료되었습니다.'); return;}
+                name[count] = document.getElementById("p1").value;
+                score[count] = (Number)(document.getElementById("p2").value);
+                if((document.getElementById("p1").value).length===0) {alert('입력 끝'); flag=1; return;}
+                else {alert('입력 완료');}
+                document.getElementById("p1").value="";
+                document.getElementById("p2").value="";
+                count++;
+            }
+            function f2(){
+            if (flag=1){
+            var temp1=0; var temp2="";
+             var sum="";
+                for(var i=0; i<count-1; i++){
+                    for(var j=i+1; j<count; j++){
+                        if(score[i]<=score[j]){
+                            temp1=score[i];
+                            score[i]=score[j];
+                            score[j]=temp1;
+
+                            temp2=name[i];
+                            name[i]=name[j];
+                            name[j]=temp2;
+                        }
+                    }
+                }
+                for(var i=0; i<count; i++){
+                    sum+= "학생 이름 : " + name[i] + " 성적 : " + score[i] + "<BR>";
+                }
+                document.getElementById("result").innerHTML = sum;
+            }
+            else {alert('입력이 끝나야합니다');}
+        }
+        </script>
+    </head>
+    <body>
+        <label>이름 : <input type="text" id = "p1"></label><br>
+        <label>성적 : <input type="text" id = "p2"></label> <button type="submit" onClick="f1()">입력</button><br>
+        <button type="submit" onClick="f2()">정렬</button>
+        <p id="result">입력 결과</p>
+    </body>
+</html>

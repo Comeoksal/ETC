@@ -1,0 +1,79 @@
+<html>
+    <head>
+        <style>
+            .ebutton{
+                padding : 50px 5px;
+            }
+            .table1{
+                padding : 25px 25px;
+            }
+            .out{
+                padding : 20px 20px;
+            }
+        </style>
+        <script type="text/javascript">
+            var value=0;
+            var symbol="";
+            var sum="";
+            function plus(){
+                sum+= "+"
+                document.getElementById("input").value = sum;
+            }
+            function minus(){
+                sum+= "-"
+                document.getElementById("input").value = sum;
+            }
+            function mul(){
+                sum+= "*"
+                document.getElementById("input").value = sum;
+            }
+            function div(){
+                sum+= "/"
+                document.getElementById("input").value = sum;
+            }
+            function num(){
+                sum += document.getElementById(id_name).value;
+                document.getElementById("input").value = sum;
+            }
+
+        </script>
+    </head>
+    <body>
+        <div>
+            <input type="text" id = "input" size="20" class="out">
+        </div>
+        <table border="1" class="table1">
+            <thead>
+                <tr>
+                    <th><button type="submit" id = "plus" onClick="plus()">+</button></th>
+                    <th><button type="submit" id = "minus" onClick="minus()">-</button></th>
+                    <th><button type="submit" id = "multiple" onClick="mul()">x</button></th>
+                    <th><button type="submit" id = "divide" onClick="div()">/</button></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th><button type="submit" id = "7" value="7" onClick="num()">7</button></th>
+                    <th><button type="submit" id = "8">8</button></th>
+                    <th><button type="submit" id = "9">9</button></th>
+                    <td rowspan="4"><button type="submit" id = "equal" class ="ebutton">=</button></td>
+                </tr>
+                <tr>
+                    <th><button type="submit" id = "4">4</button></th>
+                    <th><button type="submit" id = "5">5</button></th>
+                    <th><button type="submit" id = "6">6</button></th>
+                </tr>
+                <tr>
+                    <th><button type="submit" id = "1">1</button></th>
+                    <th><button type="submit" id = "2">2</button></th>
+                    <th><button type="submit" id = "3">3</button></th>
+                </tr>
+                <tr>
+                    <th><button type="submit" id="factorial" >!</button></th>
+                    <th><button type="submit" id = "0">0</button></th>
+                    <th><button type="submit" id="dot" >.</button></th>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

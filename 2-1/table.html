@@ -1,0 +1,47 @@
+<html>
+    <head>
+      <script type="text/javascript">
+        function f1(){
+          var Array=[];
+          var sum=0;
+          var put = (Number)(document.getElementById("input").value);
+          for(var i=0; i<put; i++){
+            Array[i]=prompt('더할 숫자를 입력하세요.');
+            sum+=(Number)(Array[i]);
+            }
+            alert(sum);
+
+          var arr = ["자바스크립트", "C언어", "파이썬"];
+          var out = "";
+
+          arr.push('ASP.net');
+          arr.push('C#.net');
+
+          for(var a=0; a<arr.length; a++){
+            out = out + arr[a] + "<BR>";
+          }
+
+          document.getElementById("pid").innerHTML = sum;
+          arr.pop(); arr.pop();
+
+        }
+      </script>
+    </head>
+    <body>
+      enter a number : <input id="input" type="text" value="">
+
+      <button type="button" id="ok" onClick="f1()">
+        OK </button><br>
+      출력값:<text id="pid"> <br>
+
+        <input type = "button" id = 'btnclk' value = '버튼'>
+        <script>
+          function msg(event){
+            alert(event.type);
+            alert("x좌표 :" + event.clientX);
+            alert("y좌표 :" + event.clientY);
+          }
+          btnclk.addEventListener('click', msg);
+        </script>
+    </body>
+</html>

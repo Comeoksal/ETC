@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            let Student = new Array(); //Student 배열 선언
+            var count = 0; // 학생수를 셀 변수
+            var flag = 0; // 입력이 완료되었는지 체크할 변수
+            function f1(){
+                if(flag==1) {alert('입력이 종료되었습니다.'); return;}
+
+                Student.push( 
+                  {
+                    name : document.getElementById("name").value,
+                    middle : (Number)(document.getElementById("mTest").value),
+                    last : (Number)(document.getElementById("lTest").value),
+                    hw : (Number)(document.getElementById("HW").value)
+                  }
+                );
+
+                if((document.getElementById("name").value).length===0) {alert('입력 끝'); flag=1; return;}
+                else {alert('입력 완료');}
+
+                document.getElementById("name").value = "";
+                document.getElementById("mTest").value = "";
+                document.getElementById("lTest").value = "";
+                document.getElementById("HW").value = "";
+                count++;
+            }
+            function sum(){
+            if (flag==1){
+                var temp1=0; var temp2="";
+                var result="";
+                var addScore = [];
+                for(var i=0; i<count; i++){
+                    addScore[i] = Student[i].middle + Student[i].last + Student[i].hw;
+                }
+                for(var i=0; i<count-1; i++){
+                    for(var j=i+1; j<count; j++){
+                        if(addScore[i]<=addScore[j]){
+                            temp1=addScore[i];
+                            addScore[i]=addScore[j];
+                            addScore[j]=temp1;
+
+                            temp2=Student[i].name;
+                            Student[i].name=Student[j].name;
+                            Student[j].name=temp2;
+                        }
+                    }
+                }
+                result ="최고 성적 학생 : " + Student[0].name + " 총점 : " + addScore[0]
+                document.getElementById("result").innerHTML = result;
+            }
+            else {alert('입력이 끝나야합니다');}
+            }
+        </script>
+    </head>
+    <body>
+        <label>이름 : <input type="text" id = "name"></label><br>
+        <label>중간성적 : <input type="text" id = "mTest"></label><br>
+        <label>기말성적 : <input type="text" id = "lTest"></label><br>
+        <label>과제점수 : <input type="text" id = "HW"></label> <button type="submit" onClick="f1()">입력</button><br><br>
+        <button type="submit" onClick="sum()">학기말 성적 산출</button>
+        <p id="result">산출 결과</p>
+    </body>
+</html>

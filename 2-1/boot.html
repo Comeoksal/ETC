@@ -1,0 +1,70 @@
+<html>
+    <head>
+      <script type="text/javascript">
+        function f1(){
+          var str=[]; var change =[]; var change2=[];
+          var sum=""; var sum2="";
+          str = document.getElementById("input").value;
+
+            for(var i=0; i<str.length; i++){
+              if((str[i].charCodeAt()>=65&&str[i].charCodeAt()<=90)){
+                if(str[i].charCodeAt()==90){
+                  change[i]=65
+                }
+                else{
+                  change[i]=(str[i].charCodeAt()+1);
+                }
+              }
+              else if((str[i].charCodeAt()>=97&&str[i].charCodeAt()<=122)){
+                if(str[i].charCodeAt()==122){
+                  change[i]=97
+                }
+                else{
+                  change[i]=(str[i].charCodeAt()+1);
+                }
+              }
+              else{
+                change[i]=str[i].charCodeAt();
+              }
+              sum+=String.fromCharCode(change[i]);
+            }
+
+            document.getElementById("pid1").innerHTML = sum;
+          
+            for(var i=0; i<change.length; i++){
+              if((change[i]>=65&&change[i]<=90)){
+                if(change[i]==65){
+                  change2[i]=90
+                }
+                else{
+                  change2[i]=(change[i]-1);
+                }
+              }
+              else if((change[i]>=97&&change[i]<=122)){
+                if(change[i]==97){
+                  change2[i]=122
+                }
+                else{
+                  change2[i]=(change[i]-1);
+                }
+              }
+              else{
+                change2[i]=change[i];
+              }
+              sum2+=String.fromCharCode(change2[i]);
+            }
+            document.getElementById("pid2").innerHTML = sum2;
+      
+    }
+      </script>
+    </head>
+    <body>
+      비밀번호 입력 : <input id="input" type="password" value="">
+
+      <button type="button" id="ok" onClick="f1()">
+        암호화 </button><br>
+      출력값:<p id="pid1">암호화된 값</p>
+      ********해독 후*********
+      <p id="pid2">해독된 값</p>
+    </body>
+</html>

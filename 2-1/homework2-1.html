@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            let name=[]; //학생 이름을 넣을 배열
+            var score=[]; //학생 성적을 넣을 배열
+            var count=0; // 학생 수를 셀 변수 학생 수는 count-1 , 마지막에 빈 칸을 받았기 때문
+            var flag=0; // 입력이 완료되었는지 체크할 변수
+            function f1(){
+                if(flag==1) {alert('입력이 종료되었습니다.'); return;}
+
+                name[count] = document.getElementById("name").value;
+                score[count] = (Number)(document.getElementById("score").value);
+
+                if((document.getElementById("name").value).length===0) {alert('입력 끝'); flag=1; return;}
+                else {alert('입력 완료');}
+
+                document.getElementById("name").value="";
+                document.getElementById("score").value="";
+                count++;
+            }
+            function f2(){
+            if (flag==1){
+            var temp1=0; var temp2="";
+            var result="";
+                for(var i=0; i<count-1; i++){
+                    for(var j=i+1; j<count; j++){
+                        if(score[i]<=score[j]){
+                            temp1=score[i];
+                            score[i]=score[j];
+                            score[j]=temp1;
+
+                            temp2=name[i];
+                            name[i]=name[j];
+                            name[j]=temp2;
+                        }
+                    }
+                }
+                for(var i=0; i<count; i++){
+                    result+= "학생 이름 : " + name[i] + " 성적 : " + score[i] + "<BR>";
+                }
+                result+="최고 성적 학생 : " + name[0] + " 성적 : " + score[0] +"<BR>" + "최하 성적 학생 : "  + name[count-1] + " 성적 : " + score[count-1];
+                document.getElementById("result").innerHTML = result;
+            }
+            else {alert('입력이 끝나야합니다');}
+        }
+        </script>
+    </head>
+    <body>
+        <label>이름 : <input type="text" id = "name"></label><br>
+        <label>성적 : <input type="text" id = "score"></label> <button type="submit" onClick="f1()">입력</button><br><br>
+        <button type="submit" onClick="f2()">정렬 실행</button>
+        <p id="result">입력 결과</p>
+    </body>
+</html>
