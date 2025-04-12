@@ -1,0 +1,9 @@
+/* CREATE TABLE users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username TEXT NOT NULL,
+    password TEXT NOT NULL
+); */
+
+INSERT INTO users (username, password) VALUES ('grape', 'secret1234');
+INSERT INTO users (username, password) VALUES ('alice', 'alice!@');
+INSERT INTO users (username, password) VALUES ('babo', 'babo1234');
